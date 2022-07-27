@@ -1,0 +1,71 @@
+<view class='rong-chat' style='bottom: {{bottom}}px;' id="rong-chat-id">
+  <view id="rong-messages">
+    <view id="rong-message-wrap-el">
+      <button a:if='{{hasMore}}' class="rong-messages-getbtn" type="primary" size="mini" onTap="getMoreMessages">加载更多</button>
+      <loading a:if="{{!isAllowScroll}}"></loading>
+      <withoutmessage a:if='{{!hasMore}}' id='message-notify-without'></withoutmessage>
+      <message a:for="{{messageList}}" 
+        a:key='{{message.uId}}' 
+        a:for-item="message" 
+        message='{{message}}' 
+        id='U-{{message.uId}}' 
+        onPlay='onPlayVoice' 
+        onPlaymusic='onPlayMusic' 
+        onMusicstop='onMusicStop' 
+        onPreviewimage='onPreviewImage'>
+      </message>
+    </view>
+  </view>
+  <view a:if='{{isRecording}}' class='rong-voice-recording'></view>
+
+  <view class='rong-editor'>
+
+   <input a:if='{{!isShowKeyboard}}' class='rong-editor-input' 
+      adjust-position='{{false}}' 
+      onInput='onInput' 
+      onFocus='onFocus' 
+      value='{{content}}' 
+      confirm-type='send' 
+      confirm-hold='{{true}}' 
+      onConfirm='sendText' 
+      maxlength='-1'>
+    </input>
+
+    <view a:if='{{ !isShowEmojiSent }}' class='rong-icon rong-editor-btn rong-editor-btn-more' onTap='showMore'></view>
+    <view a:if='{{isShowEmojiSent}}' class='rong-editor-btn rong-editor-btn-emojisent' onTap='sendText'>发送</view>
+    <view class='rong-icon rong-editor-btn rong-editor-btn-emoji' onTap='showEmojis'></view>
+  </view>
+</view>
+
+<view class='rong-editor-emojis' style='display:{{display.emoji}};'>
+  <swiper indicator-dots="{{true}}" class='rong-emojis-swiper'>
+    <block a:for="{{emojis}}" a:key='group' a:for-item='group'>
+      <swiper-item>
+        <text class='rong-editor-emoji' a:for="{{group}}" a:key='emoji' onTap='selectEmoji' data-emoji='{{item.emoji}}'>
+          {{item.emoji}}
+        </text>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class='rong-editor-more' style='display:{{display.more}};'>
+  <swiper indicator-dots="{{true}}" class='rong-modules-swiper'>
+    <block>
+      <swiper-item>
+        <view class='rong-editor-modules'>
+          <view class='rong-editor-module rong-editor-module-image' onTap='sendImage'></view>
+        </view>
+
+        <view class='rong-editor-modules'>
+          <view class='rong-editor-module rong-editor-module-music' onTap='sendMusic'></view>
+        </view>
+
+        <view class='rong-editor-modules'>
+          <view class='rong-editor-module rong-editor-module-file' onTap='sendFile'></view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='rong-adapter-box' style='height: {{adapterHeight}}px;'></view>

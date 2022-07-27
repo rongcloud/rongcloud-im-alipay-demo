@@ -1,0 +1,7 @@
+{
+  "enableAppxNg": true,
+  "node_modules_es6_whitelist": [
+    "@rongcloud/imlib-next",
+    "@rongcloud/engine"
+  ]
+}

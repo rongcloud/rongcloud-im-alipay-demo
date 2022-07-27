@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/conversation/list",
+    "pages/conversation/chat"
+  ],
+  "window": {
+    "defaultTitle": "My App"
+  }
+}

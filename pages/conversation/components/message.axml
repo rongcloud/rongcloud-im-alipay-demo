@@ -1,0 +1,25 @@
+ <view class='rong-message'>
+      <view class="rong-message-avatar-{{message.direction}}">
+        <view class="rong-message-name">{{message.sender.name}}</view>
+        <image class='rong-avatar rong-message-avatar' src='{{message.sender.avatar}}'></image>
+      </view>
+     
+      <view a:if = '{{message.name == "RC:ImgMsg"}}' class='rong-message-content rong-message-content-image-{{message.direction}}'>
+        <image-message message='{{message}}' onPreviewimage='onPreviewImage'></image-message>
+      </view>
+
+      <view a:else class='rong-message-content rong-message-content-{{message.direction}}'>
+        <text-message a:if =  '{{message.name == "RC:TxtMsg"}}'   message='{{message}}'></text-message>
+        <voice-message a:elif = '{{message.name == "RC:HQVCMsg"}}'  message='{{message}}' onPlay='onPlayVoice'></voice-message> 
+        <voice-message a:elif='{{message.name == "RC:VcMsg"}}' message='{{message}}' onPlay='onPlayVoice'></voice-message>
+        <music-message a:elif = '{{message.name == "seal:music"}}'  message='{{message}}' onPlaymusic='onPlayMusic' onStopmusic='onMusicStop'></music-message> 
+        <file-message a:elif = '{{message.name == "RC:FileMsg"}}' message='{{message}}'></file-message>
+        <view a:else>{{message.messageType}}</view>
+      </view>
+
+
+
+      <view class='rong-clearfix'></view>
+    </view>
+
+    

@@ -1,0 +1,16 @@
+<scroll-view class='rong-conversations'>
+  <view type="primary" onTap="gotoChat" a:for="{{conversationList}}" 
+      a:for-item="conversation" 
+      a:key='{{conversation.targetId}}' 
+      data-item='{{conversation}}' 
+      conversation='{{conversation}}'>
+    <conversation onTap='gotoChat'  
+      data-item='{{conversation}}' 
+      conversation='{{conversation}}'>
+    </conversation>
+  </view>
+  
+</scroll-view>
+
+<view class='rong-authorization-tip' a:if="{{!hasUserAuth}}">需要您的授权才可以使用哦～</view>
+<button  a:if="{{!hasUserAuth}}" open-type="getAuthorize" scope='userInfo' onGetAuthorize="onGetAuthorize" class='rong-authorization-btn'> 立即授权 </button>

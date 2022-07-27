@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "text-message": "./message/text",
+    "image-message": "./message/image",
+    "voice-message": "./message/voice",
+    "music-message": "./message/music",
+    "file-message": "./message/file"
+  }
+}

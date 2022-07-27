@@ -1,0 +1,7 @@
+.tea
+.mini-ide
+.DS_Store
+package-lock.json
+node_modules
+miniprogram_npm
+github_demo
