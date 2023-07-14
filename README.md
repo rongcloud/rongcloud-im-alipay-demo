@@ -61,11 +61,15 @@ websdk-miniprogram
 
 **快速体验**
 
-1.申请 Appkey
+1. 申请 Appkey
 
 在开始之前，请先前往开发者后台[注册开发者账户](https://developer.rongcloud.cn/signup)。注册后，开发者后台将自动为你创建一个应用，默认为开发环境应用，使用国内数据中心。请获取该应用的 App Key，在本教程中使用。
 
-2.获取 Token
+2. 开通单群聊云存储服务
+
+Web 端不具备持久化的数据存储能力，无法在本地持久化存储历史消息记录与会话列表，因此需要从融云服务端获取数据。从远端获取单群聊历史消息要求您已在开发者后台 [IM 服务管理](https://developer.rongcloud.cn/advance/index)页面为当前使用的 App Key 开启**单群聊消息云端存储**服务。
+
+3. 获取 Token
 
 应用客户端在使用融云即时通讯功能前必须连接融云服务器，连接时必须传入 Token 参数。Token 是与用户 ID 对应的身份验证令牌，是应用客户端用户在融云的唯一身份标识。
 
@@ -82,7 +86,7 @@ websdk-miniprogram
 提交后，可在左侧结果中取得 Token 字符串。
 
 
-3.测试收发消息
+4. 测试收发消息
 
 对融云来说，只要提供对方的 userId，融云就可支持跟对方发起聊天。例如，A 需要 发送消息给 B，只需要将 B 的 userId 告知融云服务即可发送消息。
 
@@ -120,9 +124,9 @@ websdk-miniprogram
 
 融云内置 VoiceMessage 类型音频格式为 Base64 格式 AMR ，因此示例中音频无法直接和其他端互通 (Android、iOS)，但可间接支持播放:
 
-1、发送语音消息前，通过应用服务器转换音频文件
+1. 发送语音消息前，通过应用服务器转换音频文件
 
-2、可通过示例语音消息中的 URL 播放远程音频文件
+2. 可通过示例语音消息中的 URL 播放远程音频文件
 
 <br/>
 
@@ -131,9 +135,9 @@ websdk-miniprogram
 注意：IM 下 getFileToken、 getFileUrl 必须在连接成功后调用
 
 融云支付宝小程序提供七牛云上传服务
-1、上传使用小程序 SDK 的 `getFileToken` 方法获取上传认证信息， 使用 `getFileUrl` 获取上传成功后的可访问地址
-2、上传接口使用微信官方接口 `my.uploadFile` 和 `my.request` 方法
-3、上传逻辑说明如下：
+1. 上传使用小程序 SDK 的 `getFileToken` 方法获取上传认证信息， 使用 `getFileUrl` 获取上传成功后的可访问地址
+2. 上传接口使用微信官方接口 `my.uploadFile` 和 `my.request` 方法
+3. 上传逻辑说明如下：
 
 ```js
 /**
@@ -200,9 +204,9 @@ const upload = (fileInfo, uploadType) => {
 
 > 常见问题
 
-1、支付宝小程序会话未读数本地清除后，应用刷新后会话未读数还存在（已知bug）, 会在下一个版本修复。
+1. 支付宝小程序会话未读数本地清除后，应用刷新后会话未读数还存在（已知bug）, 会在下一个版本修复。
 
-2、提示 `其他设备登录` (状态码为 `6` ) 排查思路
+2. 提示 `其他设备登录` (状态码为 `6` ) 排查思路
 
 ```
 (1) 排查 Token 是否存在多设备同时使用,例如 `模拟器`、`真机预览` 使用的是相同的 `Token`
@@ -210,7 +214,7 @@ const upload = (fileInfo, uploadType) => {
 (2) 排查项目是否引入多次 `小程序 SDK`, 项目内只允许引入一次，多页使用可用 `globalData` 共享
 ```
 
-3、\_ConnectionStatusListener.onChanged is not a function
+3. \_ConnectionStatusListener.onChanged is not a function
 
 ```
 连接状态: 其他设备登录请误调用连接、重连方法
